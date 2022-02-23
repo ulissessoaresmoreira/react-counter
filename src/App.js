@@ -1,26 +1,50 @@
 import React, {useState} from 'react'
 
-import Home from './Home'
-import Albuns from './Albuns'
+import Albums from './Albums'
 import Counter from './Counter'
+import Users from './Users'
+
+const defaultPage = 'Users'
+
+const pages = {
+  albums: {
+    text: 'Álbuns',
+    component: Albums,
+  },
+  counter: {
+    text: 'Counter',
+    component: Counter,
+  },
+  users: {
+    text: 'Usuários',
+    component: Users,
+  }
+}
 
 function App(){
-  const [page, setPage] = useState()
+  const [page, setPage] = useState(defaultPage)
 
-  const handleChangePage = (page) =>{
+  const handleChangePage = page => {   
     setPage(page)
   }
+  
+  const Page = pages[page]
 
-  const Page = page === 'albuns'? Albuns: Counter
+  const pageNames = Object.keys(pages)
+  
   return(
     <>
-      <button onClick={(setPage) => handleChangePage('albuns')}>Álbuns</button>
-      <button onClick={(setPage) => handleChangePage('counter')}>Counter</button>
+      {
+        pageNames.map(page => <button onClick={() => handleChangePage(page)}>{pages[page].text}</button>)
+      }      
 
-      <Page />
+      {Page && <Page />}
 
     </>
   )
 }
 
 export default App
+
+
+

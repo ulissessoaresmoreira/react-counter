@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
 
-const Home = () => {
-    const [status, setStatus] = useState('on')
-
-
-const handleOnClick = position => {    
-    setStatus('off')
-}
-
+const Users = () => {
+    const [status, setStatus] = useState('off')
+    
+    
+    const handleOnClick = (positionButton) => {
+        const novoStatus = positionButton === 'on'? 'on': 'off'    
+        setStatus(novoStatus)
+    }
+    
+    
 
     return (
         <div>
@@ -20,4 +22,4 @@ const handleOnClick = position => {
 }
 
 
-export default Home
+export default Users

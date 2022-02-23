@@ -17,6 +17,7 @@ const Counter = () =>{
     return (
         <div className="counter">
             <span>{contador}</span>
+            <h1> Counter </h1>
             <button onClick={() => handleOnClick('-')}>-</button>
             <button onClick={() => handleOnClick('+')}>+</button>
             
